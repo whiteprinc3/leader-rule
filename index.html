@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Регламент лидера клана · Сёгунат · Эпоха Эдо</title>
+<style>
+  :root {
+    --paper: #f7f1e6;
+    --paper-2: #f0e8d8;
+    --paper-3: #e8dcc4;
+    --wood: #c9a888;
+    --wood-dark: #a8846a;
+    --wood-light: #ddc0a0;
+    --ink: #5a4a3a;
+    --ink-soft: #7a6a5a;
+    --ink-faint: #a89880;
+    --rose: #d4a0a0;
+    --rose-soft: #e8c4c4;
+    --sage: #a8b89a;
+    --sage-soft: #c8d4bc;
+    --lavender: #b0a8c8;
+    --lavender-soft: #d4cde0;
+    --sky: #a0b8c8;
+    --sky-soft: #c4d4de;
+    --gold: #c9a961;
+    --gold-soft: #e0c890;
+    --red-soft: #c88888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #e8ddd0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(212,160,160,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 90%, rgba(168,184,154,0.15) 0%, transparent 50%);
+    color: var(--ink);
+    line-height: 1.75;
+    min-height: 100vh;
+    padding: 30px 15px;
+  }
+
+  /* ===== СВИТОК ===== */
+  .scroll-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+  }
+
+  .roller {
+    width: 42px;
+    flex-shrink: 0;
+    background:
+      linear-gradient(90deg,
+        var(--wood-dark) 0%,
+        var(--wood) 20%,
+        var(--wood-light) 45%,
+        var(--wood) 70%,
+        var(--wood-dark) 100%);
+    border-radius: 21px;
+    position: relative;
+    box-shadow:
+      inset -3px 0 6px rgba(90,60,40,0.3),
+      inset 3px 0 6px rgba(90,60,40,0.2),
+      3px 0 12px rgba(90,60,40,0.2);
+  }
+
+  .roller::before,
+  .roller::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    height: 24px;
+    background:
+      linear-gradient(90deg,
+        var(--wood-dark),
+        var(--wood-light) 40%,
+        var(--wood) 60%,
+        var(--wood-dark));
+    border-radius: 12px;
+    box-shadow:
+      0 3px 8px rgba(90,60,40,0.35),
+      inset 0 2px 4px rgba(255,220,180,0.4);
+  }
+
+  .roller::before { top: -10px; }
+  .roller::after { bottom: -10px; }
+
+  .roller-knob {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle at 35% 30%, var(--wood-light), var(--wood-dark));
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(90,60,40,0.4);
+  }
+
+  .roller-knob.top { top: -28px; }
+  .roller-knob.bottom { bottom: -28px; }
+
+  .scroll-body {
+    flex: 1;
+    background: var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg,
+        transparent 0,
+        transparent 28px,
+        rgba(168,152,128,0.06) 28px,
+        rgba(168,152,128,0.06) 29px),
+      radial-gradient(ellipse at 50% 0%, rgba(224,200,144,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(200,200,224,0.15) 0%, transparent 60%);
+    padding: 60px 55px;
+    position: relative;
+    box-shadow:
+      inset 0 0 40px rgba(168,152,128,0.15),
+      0 8px 30px rgba(90,60,40,0.18);
+    border-top: 3px solid var(--paper-3);
+    border-bottom: 3px solid var(--paper-3);
+  }
+
+  .scroll-body::before,
+  .scroll-body::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--gold-soft);
+    opacity: 0.5;
+  }
+  .scroll-body::before {
+    top: 20px; left: 20px;
+    border-right: none; border-bottom: none;
+    border-top-left-radius: 8px;
+  }
+  .scroll-body::after {
+    bottom: 20px; right: 20px;
+    border-left: none; border-top: none;
+    border-bottom-right-radius: 8px;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    text-align: center;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+  }
+
+  header::after {
+    content: '❋ ❋ ❋';
+    display: block;
+    color: var(--gold);
+    letter-spacing: 12px;
+    margin-top: 25px;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  .crest {
+    font-size: 44px;
+    margin-bottom: 12px;
+    color: var(--rose);
+    filter: drop-shadow(0 2px 4px rgba(212,160,160,0.4));
+  }
+
+  h1 {
+    font-size: 34px;
+    color: var(--ink);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+
+  .subtitle {
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-top: 12px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+  }
+
+  .subtitle::before,
+  .subtitle::after {
+    content: '—';
+    margin: 0 12px;
+    color: var(--gold);
+  }
+
+  /* ===== НАВИГАЦИЯ ===== */
+  .toc {
+    background: var(--paper-2);
+    border: 1px dashed var(--paper-3);
+    border-radius: 6px;
+    padding: 22px 26px;
+    margin-bottom: 45px;
+  }
+
+  .toc h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--paper-3);
+    padding-bottom: 8px;
+  }
+
+  .toc ul {
+    list-style: none;
+    columns: 2;
+    column-gap: 30px;
+  }
+
+  .toc li {
+    padding: 4px 0;
+    font-size: 13.5px;
+  }
+
+  .toc a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    border-bottom: 1px dotted transparent;
+  }
+
+  .toc a:hover {
+    color: var(--rose);
+    border-bottom-color: var(--rose);
+  }
+
+  .toc a::before {
+    content: '❀ ';
+    color: var(--sage);
+    font-size: 11px;
+    margin-right: 4px;
+  }
+
+  /* ===== РАЗДЕЛЫ ===== */
+  section {
+    margin-bottom: 55px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: normal;
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+    position: relative;
+    border-bottom: 2px solid var(--gold-soft);
+  }
+
+  .section-title::before {
+    content: '❋';
+    color: var(--rose);
+    margin-right: 12px;
+    font-size: 18px;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--rose);
+  }
+
+  /* ===== ПУНКТЫ ===== */
+  .rule {
+    background: var(--paper-2);
+    border-left: 4px solid var(--sage);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    transition: all 0.25s ease;
+    box-shadow: 2px 2px 0 rgba(168,152,128,0.1);
+  }
+
+  .rule:hover {
+    transform: translateX(4px);
+    background: var(--paper);
+    box-shadow: 3px 3px 0 rgba(168,152,128,0.18);
+  }
+
+  .rule.warn { border-left-color: var(--rose); }
+  .rule.gold { border-left-color: var(--gold); }
+  .rule.lav { border-left-color: var(--lavender); }
+  .rule.sky { border-left-color: var(--sky); }
+
+  .rule-num {
+    font-weight: bold;
+    color: var(--ink);
+    margin-right: 6px;
+  }
+
+  .rule-text {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .punish {
+    display: inline-block;
+    background: var(--rose-soft);
+    color: #8a4a4a;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  .punish.gold {
+    background: var(--gold-soft);
+    color: #8a6a2a;
+  }
+
+  .punish.sage {
+    background: var(--sage-soft);
+    color: #4a6a3a;
+  }
+
+  .punish.lav {
+    background: var(--lavender-soft);
+    color: #6a5a8a;
+  }
+
+  .note {
+    background: rgba(200,212,188,0.3);
+    border-left: 3px solid var(--sage);
+    padding: 10px 16px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .note::before {
+    content: '✿ ';
+    color: var(--sage);
+    font-style: normal;
+  }
+
+  .note.warn {
+    background: rgba(232,196,196,0.3);
+    border-left-color: var(--rose);
+  }
+  .note.warn::before { color: var(--rose); }
+
+  .note.gold {
+    background: rgba(224,200,144,0.3);
+    border-left-color: var(--gold);
+  }
+  .note.gold::before { color: var(--gold); }
+
+  /* ===== ТАБЛИЦА НАКАЗАНИЙ ===== */
+  .punish-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    border: 1px solid var(--paper-3);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(168,152,128,0.12);
+  }
+
+  .punish-table thead {
+    background: linear-gradient(180deg, var(--paper-3), var(--paper-2));
+  }
+
+  .punish-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: var(--ink);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid var(--gold-soft);
+    font-weight: bold;
+  }
+
+  .punish-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--paper-2);
+    color: var(--ink-soft);
+  }
+
+  .punish-table tbody tr:nth-child(even) {
+    background: rgba(240,232,216,0.4);
+  }
+
+  .punish-table tbody tr:hover {
+    background: rgba(224,200,144,0.15);
+  }
+
+  .punish-table td:last-child {
+    color: #a86060;
+    font-style: italic;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 35px 20px 10px;
+    color: var(--ink-faint);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 30px;
+  }
+
+  footer::before {
+    content: '~ ❋ ~';
+    display: block;
+    color: var(--gold);
+    letter-spacing: 8px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    opacity: 0.6;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 800px) {
+    body { padding: 20px 8px; }
+    .scroll-body { padding: 40px 22px; }
+    .roller { width: 28px; }
+    .roller-knob { width: 16px; height: 16px; }
+    .roller::before, .roller::after { height: 18px; left: -6px; right: -6px; }
+    h1 { font-size: 22px; letter-spacing: 3px; }
+    .crest { font-size: 32px; }
+    .subtitle { font-size: 12px; }
+    .subtitle::before, .subtitle::after { margin: 0 6px; }
+    .section-title { font-size: 17px; letter-spacing: 2px; }
+    .toc ul { columns: 1; }
+    .punish-table { font-size: 12px; }
+    .punish-table th, .punish-table td { padding: 8px 10px; }
+  }
+
+  @media (max-width: 500px) {
+    .scroll-body { padding: 30px 14px; }
+    .roller { width: 18px; }
+    .roller-knob { display: none; }
+    h1 { font-size: 17px; letter-spacing: 1.5px; }
+    .rule { padding: 12px 14px; }
+    .rule-text { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-wrap">
+
+  <div class="roller">
+    <div class="roller-knob top"></div>
+    <div class="roller-knob bottom"></div>
+  </div>
+
+  <div class="scroll-body">
+
+    <header>
+      <div class="crest">❋</div>
+      <h1>Регламент</h1>
+      <p class="subtitle">Лидер клана · Сёгун · Эпоха Эдо</p>
+    </header>
+
+    <!-- СОДЕРЖАНИЕ -->
+    <nav class="toc">
+      <h3>Содержание свитка</h3>
+      <ul>
+        <li><a href="#r1">I. Общие положения</a></li>
+        <li><a href="#r2">II. Положения для лидеров</a></li>
+        <li><a href="#r3">III. Особые положения для сёгуна</a></li>
+        <li><a href="#r4">IV. Особые положения для кланов</a></li>
+        <li><a href="#r5">V. Наказания</a></li>
+        <li><a href="#r6">VI. Заключительные положения</a></li>
+      </ul>
+    </nav>
+
+    <!-- РАЗДЕЛ I -->
+    <section id="r1">
+      <h2 class="section-title">I. Общие положения</h2>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">1.1.</span> Лидер клана и сёгун обязаны играть под <b>IC-никнеймом своего персонажа</b>, соответствующим эпохе Эдо (например: <i>Токугава Иэмоти</i>, <i>Симадзу Нариакира</i>). Использование OOC-ников в игре запрещено. <span class="punish">Устный выговор</span></div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">1.2.</span> Если лидер <b>не справляется с обязанностями</b>, он получает выговор, строгий выговор или снятие с занесением в <b>чёрный список лидеров</b> на 3 игровых дня. <span class="punish">Выговор / Снятие + ЧС</span></div>
+      </div>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">1.3.</span> Минимальный суточный онлайн лидера — <b>90 минут</b>. Для сёгуна — <b>120 минут</b> (с учётом расширенных обязанностей). <span class="punish gold">Устный / Строгий выговор / Снятие</span></div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">1.4.</span> После получения должности лидера клана игрок обязан отсидеть на ней <b>минимум две недели</b>. Иначе — чёрный список набора.</div>
+        <div class="note">Исключение: донат-лидеры испытательного срока не имеют.</div>
+      </div>
+
+      <div class="rule lav">
+        <div class="rule-text"><span class="rule-num">1.5.</span> Лидер клана <b>не может одновременно</b> управлять двумя фракциями без официального снятия с одной. <span class="punish lav">Снятие</span></div>
+        <div class="note">Примечание: если игрок занимает лидерскую должность, он вправе подать заявку на вторую пост и стоять на обоих, если это по силам и одобрено куратором.</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">1.6.</span> Повышать во фракции можно <b>только на 1 ранг в день</b>. <span class="punish">Устный выговор</span></div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">1.7.</span> Если лидер снят, он <b>не может подавать заявки 5 дней</b>. Если не прошёл обзвон или не явился по неуважительной причине — <b>3 дня</b>. <span class="punish">Устный выговор</span></div>
+      </div>
+
+      <div class="rule sky">
+        <div class="rule-text"><span class="rule-num">1.8.</span> Лидеры и сёгун обязаны <b>отвечать на игровые вопросы и предложения</b> в ЛС или официальных Discord-каналах проекта <b>в течение 72 часов</b>. <span class="punish">Устный / Строгий выговор</span></div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ II -->
+    <section id="r2">
+      <h2 class="section-title">II. Положения для лидеров</h2>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">2.1.</span> <b>Лидер клана</b> — лицо, управляющее фракцией и несущее ответственность перед следящей администрацией и РП-куратором.</div>
+      </div>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">2.2.</span> Успешный лидерский срок — <b>один месяц (30 дней)</b>.</div>
+        <div class="note gold">Дополнение: по окончании срока проверяются отчёты, активность, мероприятия, онлайн заместителей. Высшая администрация принимает решение о продлении.</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">2.2.1.</span> При успешном <b>третьем сроке без нарушений</b> (3+ месяца) лидер клана получает вознаграждение (внутриигровое или статусное).</div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">2.2.2.</span> Лидер <b>не может занимать срок повторно после снятия</b>. <span class="punish">Снятие</span></div>
+        <div class="note warn">Пояснение: как минимум один лидер после него должен отстоять свой срок.</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">2.2.3.</span> По окончании срока лидер может дать <b>две рекомендации</b> на заместителей (каро, советников), если они заинтересованы. Рекомендации учитываются при общем обзоре кандидатов.</div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">2.3.</span> Лидерам <b>запрещены грубые, унизительные или оскорбительные высказывания</b> в адрес игроков и администрации в официальных Discord-серверах. <span class="punish">Устный / Строгий выговор / Снятие</span></div>
+      </div>
+
+      <div class="rule lav">
+        <div class="rule-text"><span class="rule-num">2.4.</span> Максимальное количество заместителей лидера — <b>3</b> (каро / старейшины). <span class="punish lav">Устный выговор</span></div>
+        <div class="note">Примечание: заместителями могут быть только доверенные лица клана (главы родов, советники).</div>
+      </div>
+
+      <div class="rule sky">
+        <div class="rule-text"><span class="rule-num">2.5.</span> В течение <b>1 дня</b> после вступления в должность лидер вправе назначать любого человека на любую должность (инструкторы, кэсацу, не-лорные советники). <span class="punish">Устный выговор + Снятие заместителей</span></div>
+        <div class="note">Исключение: главы родов и советники. Условие: правило действует только на первый срок.</div>
+      </div>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">2.6.</span> На лидера клана <b>нельзя оформить RP-смерть</b>.</div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">2.7.</span> Лидеру <b>запрещено</b> насильно трансферить или расформировывать состав фракции без одобрения <b>РП-куратора</b>. <span class="punish">Снятие + ЧС лидера</span></div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">2.8.</span> Лидер может уволить любого игрока из фракции, имея <b>IC-причину</b> (предательство, нарушение бусидо, неподчинение). <span class="punish">Откат увольнения + Строгий выговор</span></div>
+      </div>
+
+      <div class="rule sky">
+        <div class="rule-text"><span class="rule-num">2.9.</span> Лидер обязан иметь <b>настроенный Discord-сервер фракции</b>, включающий все роды, отряды и ранги. Каналы должны быть отсортированы и читаемы. <span class="punish">Устный выговор</span></div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">2.9.1.</span> Запрещено использовать <b>сторонние Discord-серверы</b> для отчётности, правил, состава и информации, связанной с сервером. <span class="punish">Строгий выговор / Снятие</span></div>
+        <div class="note warn">Пояснение: общение, круг интересов и несерверные темы под это правило не попадают.</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">2.10.</span> Лидер обязан иметь <b>оформленный сайт или форум</b> с основной информацией о клане (история, состав, устав, хроника). <span class="punish">Устный выговор</span></div>
+      </div>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">2.11.</span> Лидер обязан <b>поддерживать онлайн и активность</b> фракции. <span class="punish gold">Устный / Строгий выговор / Снятие</span></div>
+      </div>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">2.12.</span> Лидер обязан <b>повышать досуг и RP-уровень</b> фракции: чайные церемонии, поэтические турниры, военные советы, суды. <span class="punish gold">Устный / Строгий выговор / Снятие</span></div>
+      </div>
+
+      <div class="rule lav">
+        <div class="rule-text"><span class="rule-num">2.13.</span> Лидер обязан проводить <b>минимум 1 межфракционное мероприятие в неделю</b> (союзный пир, совместный поход, обмен заложниками, династический брак). <span class="punish lav">Устный выговор</span></div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">2.14.</span> На усмотрение куратора сервера / РП-куратора с лидера может быть снято <b>одно устное предупреждение</b> за проведённое <b>глобальное мероприятие</b>, но не чаще чем раз в 3 дня. <span class="punish">Строгий выговор</span></div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">2.15.</span> Лидеру запрещено иметь в составе игроков с <b>nonRP-никнеймами</b>, не подходящими под правила сервера. <span class="punish">Устный выговор + понижение</span></div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">2.16.</span> Лидерам запрещено любое <b>NonRP-движение</b> во фракции. <span class="punish">Устный / Строгий выговор / Снятие</span></div>
+      </div>
+
+      <div class="rule sky">
+        <div class="rule-text"><span class="rule-num">2.17.</span> Лидер обязан <b>быть в курсе всех проблем</b> своей фракции, устранять и пресекать внутрифракционные конфликты. <span class="punish">Устный / Строгий выговор</span></div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ III -->
+    <section id="r3">
+      <h2 class="section-title">III. Особые положения для сёгуна</h2>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">3.1.</span> Сёгун — <b>верховный лидер</b> бакуфу, глава военного правительства. Его решения в рамках RP обязательны для всех кланов, кроме случаев прямого вмешательства РП-куратора.</div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">3.2.</span> Сёгун <b>не может быть снят</b> по IC-причинам без RP-смерти или отречения, одобренного куратором.</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">3.3.</span> Сёгун обязан <b>вести хронику</b> ключевых событий сервера: битвы, союзы, рейды, казни, назначения.</div>
+      </div>
+
+      <div class="rule lav">
+        <div class="rule-text"><span class="rule-num">3.4.</span> Сёгун имеет право <b>издавать указы</b> (бакуфу-рэй), обязательные для исполнения всеми даймё. Указы публикуются на форуме и в Discord-канале бакуфу.</div>
+      </div>
+
+      <div class="rule sky">
+        <div class="rule-text"><span class="rule-num">3.5.</span> Сёгун обязан <b>проводить совет даймё</b> минимум <b>раз в две недели</b> в игровом формате.</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">3.6.</span> Сёгун не может <b>единолично</b> менять систему Casus Belli — изменения согласуются с РП-куратором и администрацией.</div>
+      </div>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">3.7.</span> Сёгун обязан <b>соблюдать баланс</b> между кланами: не допускать чрезмерного усиления одного рода за счёт других.</div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">3.8.</span> Все рейды уровня <b>4 (9+ баллов)</b> и выше требуют <b>уведомления сёгуна</b> до начала. Сёгун вправе отменить или приостановить рейд, если он нарушает баланс.</div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ IV -->
+    <section id="r4">
+      <h2 class="section-title">IV. Особые положения для кланов</h2>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">4.1.</span> Лидер клана обязан <b>вести родословную</b> и следить за её достоверностью.</div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">4.2.</span> Лидер клана <b>не может</b> объявить войну другому клану без накопления <b>Casus Belli</b> (см. таблицу поводов).</div>
+      </div>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">4.3.</span> Лидер клана обязан <b>согласовывать рейды</b> уровня 2+ с администрацией и уведомлять РП-куратора.</div>
+      </div>
+
+      <div class="rule lav">
+        <div class="rule-text"><span class="rule-num">4.4.</span> Лидер клана <b>не может</b> вступать в союз с кланом, против которого у него есть активные Casus Belli выше 3 баллов.</div>
+      </div>
+
+      <div class="rule sky">
+        <div class="rule-text"><span class="rule-num">4.5.</span> Лидер клана обязан <b>соблюдать бусидо</b> в RP-взаимодействии: честность, верность, уважение к противнику.</div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">4.6.</span> Лидер клана несёт ответственность за <b>поведение своих самураев</b>: если подчинённый нарушает правила, лидер получает устный выговор.</div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-text"><span class="rule-num">4.7.</span> Лидер клана обязан <b>раз в неделю</b> публиковать краткий отчёт о жизни клана (в Discord или на форуме).</div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ V -->
+    <section id="r5">
+      <h2 class="section-title">V. Наказания</h2>
+
+      <table class="punish-table">
+        <thead>
+          <tr>
+            <th>Нарушение</th>
+            <th>Наказание</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>NonRP-никнейм</td><td>Устный выговор + понижение</td></tr>
+          <tr><td>NonRP-движение</td><td>Устный / Строгий выговор / Снятие</td></tr>
+          <tr><td>Неактивность (менее 90 мин/сутки)</td><td>Устный / Строгий выговор / Снятие</td></tr>
+          <tr><td>Отсутствие отчётов</td><td>Устный выговор</td></tr>
+          <tr><td>Нарушение баланса кланов</td><td>Строгий выговор</td></tr>
+          <tr><td>Рейд без Casus Belli</td><td>Снятие + ЧС лидера</td></tr>
+          <tr><td>Оскорбления в Discord</td><td>Устный / Строгий выговор / Снятие</td></tr>
+          <tr><td>Саботаж фракции</td><td>Снятие + ЧС лидера</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- РАЗДЕЛ VI -->
+    <section id="r6">
+      <h2 class="section-title">VI. Заключительные положения</h2>
+
+      <div class="rule gold">
+        <div class="rule-text"><span class="rule-num">6.1.</span> Регламент вступает в силу с момента публикации и обязателен для всех лидеров кланов и сёгуна.</div>
+      </div>
+
+      <div class="rule lav">
+        <div class="rule-text"><span class="rule-num">6.2.</span> Изменения в регламент вносятся РП-куратором и публикуются в официальном Discord-канале проекта.</div>
+      </div>
+
+      <div class="rule sky">
+        <div class="rule-text"><span class="rule-num">6.3.</span> В случае противоречий между регламентом и общими правилами сервера приоритет имеют <b>общие правила сервера</b>.</div>
+      </div>
+
+      <div class="rule warn">
+        <div class="rule-text"><span class="rule-num">6.4.</span> Незнание регламента не освобождает от ответственности.</div>
+      </div>
+    </section>
+
+    <footer>
+      ❋ Регламент лидера клана · Сёгунат · Эпоха Эдо · RP-проект ❋
+    </footer>
+
+  </div>
+
+  <div class="roller">
+    <div class="roller-knob top"></div>
+    <div class="roller-knob bottom"></div>
+  </div>
+
+</div>
+
+<script>
+// Плавная прокрутка к разделам
+document.querySelectorAll('.toc a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
