@@ -3,306 +3,489 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Регламент лидеров KAMI</title>
+<title>Регламент</title>
 <style>
-  /* ===== БАЗА ===== */
+  /* ===== СБРОС ===== */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
   :root{
-    --ink:#f2f3f7;
-    --dim:#8b90a3;
+    --bg:#0d0e13;
+    --surface:#14161f;
+    --surface-2:#1b1e2a;
     --line:#262a3a;
-    --card:#12141c;
-    --deep:#0a0b10;
-    --fire:#ff3b4e;
-    --fire-soft:rgba(255,59,78,.14);
-    --radius:14px;
+    --ink:#edeef4;
+    --dim:#8a8fa3;
+    --accent:#ff4d5e;
+    --accent-2:#ff8a5c;
+    --green:#3ddc84;
+    --amber:#ffc043;
+    --radius:16px;
   }
+
   html{scroll-behavior:smooth}
+
   body{
     font-family:"Inter","Segoe UI",system-ui,sans-serif;
-    background:var(--deep);
+    background:var(--bg);
     color:var(--ink);
-    line-height:1.7;
+    line-height:1.65;
     font-size:15px;
     -webkit-font-smoothing:antialiased;
   }
 
-  /* ===== ВЕРХНЯЯ ПАНЕЛЬ ===== */
-  .topbar{
-    position:fixed;inset:0 0 auto 0;z-index:100;
-    height:64px;
-    display:flex;align-items:center;
-    padding:0 32px;
-    background:rgba(10,11,16,.86);
-    backdrop-filter:blur(18px);
+  /* ===== ШАПКА ===== */
+  .site-header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(13,14,19,.88);
+    backdrop-filter:blur(16px);
     border-bottom:1px solid var(--line);
   }
-  .topbar .mark{
+  .header-wrap{
+    max-width:920px;margin:0 auto;
+    padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .logo-group{
     display:flex;align-items:center;gap:12px;
-    font-weight:800;font-size:15px;letter-spacing:.4px;
   }
-  .mark .dot{
-    width:11px;height:11px;border-radius:3px;
-    background:var(--fire);
-    box-shadow:0 0 14px var(--fire);
+  .logo-badge{
+    width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;
+    font-weight:900;font-size:17px;color:#fff;
+    box-shadow:0 4px 20px rgba(255,77,94,.35);
   }
-  .mark small{
-    display:block;font-size:10.5px;font-weight:500;
-    color:var(--dim);letter-spacing:1.2px;text-transform:uppercase;
+  .logo-text strong{
+    display:block;font-size:15px;font-weight:800;letter-spacing:.2px;
   }
-  .topbar nav{
-    margin-left:auto;display:flex;gap:6px;
+  .logo-text span{
+    font-size:11px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;
   }
-  .topbar nav a{
+  .header-nav{display:flex;gap:4px}
+  .header-nav a{
     color:var(--dim);text-decoration:none;
-    font-size:13px;font-weight:600;
-    padding:8px 14px;border-radius:8px;
+    font-size:12.5px;font-weight:600;
+    padding:7px 12px;border-radius:8px;
     transition:.18s;
   }
-  .topbar nav a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+  .header-nav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
 
-  /* ===== ОБЁРТКА ===== */
-  .shell{
-    max-width:860px;
-    margin:0 auto;
-    padding:120px 28px 100px;
+  /* ===== КОНТЕЙНЕР ===== */
+  .container{
+    max-width:920px;margin:0 auto;
+    padding:48px 24px 100px;
   }
 
-  /* ===== ЗАГОЛОВОК ===== */
-  .headline{
+  /* ===== ГЕРОЙ ===== */
+  .hero{
     text-align:center;
-    margin-bottom:64px;
+    margin-bottom:56px;
+    padding:40px 20px;
     position:relative;
   }
-  .headline::before{
+  .hero::before{
     content:"";
-    position:absolute;left:50%;top:-90px;transform:translateX(-50%);
-    width:520px;height:320px;
-    background:radial-gradient(ellipse,rgba(255,59,78,.13),transparent 68%);
+    position:absolute;inset:-40px 10% auto;
+    height:280px;
+    background:radial-gradient(ellipse,rgba(255,77,94,.12),transparent 70%);
     pointer-events:none;
     z-index:-1;
   }
-  .headline .kicker{
+  .hero .eyebrow{
     display:inline-block;
-    font-size:11px;font-weight:700;letter-spacing:2.4px;
-    text-transform:uppercase;color:var(--fire);
-    padding:6px 14px;border:1px solid rgba(255,59,78,.3);
-    border-radius:999px;margin-bottom:22px;
+    font-size:10.5px;font-weight:800;
+    letter-spacing:2.6px;text-transform:uppercase;
+    color:var(--accent);
+    padding:6px 16px;
+    border:1px solid rgba(255,77,94,.28);
+    border-radius:999px;
+    margin-bottom:20px;
   }
-  .headline h1{
-    font-size:clamp(30px,6vw,46px);
+  .hero h1{
+    font-size:clamp(28px,5.5vw,42px);
     font-weight:800;
-    letter-spacing:-1px;
-    line-height:1.12;
-    margin-bottom:16px;
+    letter-spacing:-1.2px;
+    line-height:1.15;
+    margin-bottom:14px;
   }
-  .headline h1 em{
+  .hero h1 em{
     font-style:normal;
-    background:linear-gradient(90deg,var(--fire),#ff8a5c);
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
   }
-  .headline p{
+  .hero p{
     color:var(--dim);
-    max-width:560px;margin:0 auto;
+    max-width:600px;
+    margin:0 auto;
     font-size:15px;
   }
 
-  /* ===== БЛОКИ ===== */
-  .block{
-    margin-bottom:56px;
-    scroll-margin-top:96px;
+  /* ===== НАВИГАЦИЯ-ЧИПЫ ===== */
+  .chip-nav{
+    display:flex;flex-wrap:wrap;gap:8px;
+    justify-content:center;
+    margin-bottom:48px;
   }
-  .block-title{
-    display:flex;align-items:baseline;gap:14px;
-    margin-bottom:22px;
-    padding-bottom:14px;
-    border-bottom:1px solid var(--line);
-  }
-  .block-title .idx{
-    font-size:40px;font-weight:800;
-    line-height:1;
-    color:transparent;
-    -webkit-text-stroke:1.4px var(--fire);
-    letter-spacing:-2px;
-    flex-shrink:0;
-  }
-  .block-title h2{
-    font-size:19px;font-weight:700;letter-spacing:.2px;
-  }
-
-  /* ===== СТРОКА ПРАВИЛА ===== */
-  .entry{
-    display:grid;
-    grid-template-columns:52px 1fr;
-    gap:16px;
-    padding:16px 18px;
-    border-radius:var(--radius);
-    border:1px solid transparent;
+  .chip-nav a{
+    text-decoration:none;
+    font-size:12.5px;font-weight:700;
+    color:var(--dim);
+    padding:8px 16px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:999px;
     transition:.18s;
   }
-  .entry:hover{
-    background:var(--card);
-    border-color:var(--line);
+  .chip-nav a:hover{
+    color:#fff;
+    border-color:var(--accent);
+    background:var(--surface-2);
   }
-  .entry .tag{
+
+  /* ===== СЕКЦИЯ ===== */
+  .section{
+    margin-bottom:52px;
+    scroll-margin-top:90px;
+  }
+  .section-head{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:20px;
+  }
+  .section-head .num{
+    width:40px;height:40px;flex-shrink:0;
+    display:grid;place-items:center;
+    border-radius:11px;
+    background:linear-gradient(135deg,rgba(255,77,94,.18),rgba(255,138,92,.12));
+    border:1px solid rgba(255,77,94,.25);
+    font-size:15px;font-weight:900;
+    color:var(--accent);
+  }
+  .section-head h2{
+    font-size:20px;font-weight:800;
+    letter-spacing:-.3px;
+  }
+
+  /* ===== СПИСОК ПРАВИЛ ===== */
+  .rules{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .rule-item{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:16px;
+    padding:16px 20px;
+    border-bottom:1px solid var(--line);
+    transition:.15s;
+  }
+  .rule-item:last-child{border-bottom:none}
+  .rule-item:hover{background:var(--surface-2)}
+  .rule-item .idx{
     font-size:12.5px;font-weight:800;
-    color:var(--fire);
+    color:var(--accent);
     font-variant-numeric:tabular-nums;
-    letter-spacing:.5px;
+    letter-spacing:.4px;
     padding-top:2px;
   }
-  .entry .body{
-    color:#cfd2de;
+  .rule-item .text{
+    color:#cdd0dc;
+    font-size:14.5px;
   }
-  .entry .body strong{
+  .rule-item .text strong{
     color:var(--ink);
     font-weight:700;
   }
 
-  /* ===== ВЫНОСКА ===== */
-  .callout{
-    margin-top:18px;
-    padding:16px 20px;
+  /* ===== КАРТОЧКИ ВЗЫСКАНИЙ ===== */
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:14px;
+    margin-bottom:20px;
+  }
+  .info-card{
+    background:var(--surface);
+    border:1px solid var(--line);
     border-radius:var(--radius);
-    background:var(--fire-soft);
-    border:1px solid rgba(255,59,78,.22);
+    padding:20px 22px;
+    position:relative;
+    overflow:hidden;
+    transition:.2s;
+  }
+  .info-card:hover{
+    border-color:rgba(255,77,94,.35);
+    transform:translateY(-2px);
+  }
+  .info-card::before{
+    content:"";
+    position:absolute;top:0;left:0;right:0;
+    height:3px;
+  }
+  .info-card.red::before{background:var(--accent)}
+  .info-card.amber::before{background:var(--amber)}
+  .info-card.green::before{background:var(--green)}
+  .info-card .card-title{
+    font-size:14px;font-weight:800;
+    margin-bottom:8px;
+    letter-spacing:.2px;
+  }
+  .info-card.red .card-title{color:var(--accent)}
+  .info-card.amber .card-title{color:var(--amber)}
+  .info-card.green .card-title{color:var(--green)}
+  .info-card .card-text{
+    font-size:13.5px;
+    color:#b8bcc9;
+    line-height:1.6;
+  }
+  .info-card .card-text strong{color:var(--ink)}
+
+  /* ===== ПОДЗАГОЛОВОК ===== */
+  .sub-title{
+    font-size:14px;font-weight:800;
+    color:var(--dim);
+    text-transform:uppercase;
+    letter-spacing:1.4px;
+    margin:28px 0 14px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* ===== ВЫНОСКА ===== */
+  .note-box{
+    margin-top:18px;
+    padding:14px 18px;
+    border-radius:12px;
+    background:rgba(255,77,94,.08);
+    border-left:3px solid var(--accent);
     font-size:13.5px;
     color:#ffb3ba;
   }
-  .callout strong{color:#fff}
+  .note-box strong{color:#fff}
+  .note-box.amber{
+    background:rgba(255,192,67,.08);
+    border-left-color:var(--amber);
+    color:#ffd98a;
+  }
+  .note-box.green{
+    background:rgba(61,220,132,.08);
+    border-left-color:var(--green);
+    color:#8ef0b5;
+  }
 
   /* ===== ПОДВАЛ ===== */
-  .foot{
-    max-width:860px;margin:0 auto;
-    padding:0 28px 48px;
-    color:var(--dim);font-size:12.5px;
+  .site-footer{
+    max-width:920px;margin:0 auto;
+    padding:24px 24px 48px;
+    border-top:1px solid var(--line);
     text-align:center;
+    font-size:12.5px;
+    color:var(--dim);
     letter-spacing:.3px;
   }
-  .foot::before{
-    content:"";display:block;
-    height:1px;background:var(--line);
-    margin-bottom:24px;
-  }
-  .foot b{color:var(--fire);font-weight:700}
+  .site-footer b{color:var(--accent);font-weight:700}
 
-  /* ===== КНОПКА ВВЕРХ ===== */
-  .up{
-    position:fixed;right:26px;bottom:26px;z-index:90;
+  /* ===== КНОПКА НАВЕРХ ===== */
+  .scroll-up{
+    position:fixed;right:24px;bottom:24px;z-index:90;
     width:44px;height:44px;border-radius:12px;
-    background:var(--card);
+    background:var(--surface);
     border:1px solid var(--line);
-    color:var(--ink);font-size:17px;cursor:pointer;
+    color:var(--ink);font-size:18px;cursor:pointer;
     display:none;place-items:center;
     transition:.2s;
   }
-  .up:hover{background:var(--fire);border-color:var(--fire)}
-  .up.on{display:grid}
+  .scroll-up:hover{background:var(--accent);border-color:var(--accent)}
+  .scroll-up.visible{display:grid}
 
-  /* ===== МОБИЛКА ===== */
-  @media (max-width:640px){
-    .topbar{padding:0 18px}
-    .topbar nav a{display:none}
-    .shell{padding:100px 18px 80px}
-    .entry{grid-template-columns:44px 1fr;gap:12px;padding:14px 12px}
-    .block-title .idx{font-size:30px}
-    .headline{margin-bottom:44px}
+  /* ===== АДАПТИВ ===== */
+  @media (max-width:700px){
+    .header-wrap{padding:14px 18px}
+    .header-nav{display:none}
+    .container{padding:32px 18px 80px}
+    .hero{padding:24px 8px}
+    .rule-item{grid-template-columns:46px 1fr;gap:12px;padding:14px 16px}
+    .section-head h2{font-size:18px}
   }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="mark">
-    <span class="dot"></span>
-    <div>
-      Регламент лидеров KAMI
-      <small>Внутренний документ</small>
+<!-- ===== ШАПКА ===== -->
+<header class="site-header">
+  <div class="header-wrap">
+    <div class="logo-group">
+      <div class="logo-badge">K</div>
+      <div class="logo-text">
+        <strong>Регламент лидеров KAMI</strong>
+        <span>Внутренний документ</span>
+      </div>
     </div>
+    <nav class="header-nav">
+      <a href="#s1">Общие</a>
+      <a href="#s2">Поведение</a>
+      <a href="#s3">Испытательный</a>
+      <a href="#s4">Взыскания</a>
+    </nav>
   </div>
-  <nav>
-    <a href="#s1">Общие</a>
-    <a href="#s2">Поведение</a>
-    <a href="#s3">Испытательный</a>
-  </nav>
-</div>
+</header>
 
-<div class="shell">
+<div class="container">
 
-  <div class="headline">
-    <span class="kicker">KAMI · Регламент</span>
+  <!-- ===== ГЕРОЙ ===== -->
+  <div class="hero">
+    <span class="eyebrow">KAMI · Регламент</span>
     <h1>Правила для <em>лидеров</em><br>и наборного состава</h1>
-    <p>Документ обязателен к исполнению всеми наборными персонажами, лидерами клана/сёгуната и составом проекта. Незнание правил не освобождает от ответственности.</p>
+    <p>Документ обязателен к исполнению всеми наборными персонажами, лидерами клана/сёгуната. Незнание правил не освобождает от ответственности.</p>
   </div>
 
-  <!-- РАЗДЕЛ 1 -->
-  <section class="block" id="s1">
-    <div class="block-title">
-      <span class="idx">01</span>
+  <!-- ===== НАВИГАЦИЯ-ЧИПЫ ===== -->
+  <div class="chip-nav">
+    <a href="#s1">01 · Общие положения</a>
+    <a href="#s2">02 · Правила поведения</a>
+    <a href="#s3">03 · Испытательный срок</a>
+    <a href="#s4">04 · Взыскания</a>
+  </div>
+
+  <!-- ===== РАЗДЕЛ 1 ===== -->
+  <section class="section" id="s1">
+    <div class="section-head">
+      <div class="num">01</div>
       <h2>Общие положения</h2>
     </div>
-
-    <div class="entry"><span class="tag">1.1</span><div class="body">В случае рецидива нарушений мера наказаний увеличивается.</div></div>
-    <div class="entry"><span class="tag">1.2</span><div class="body">Каждый лорный персонаж обязан строго и чётко выполнять поставленные РП составом указания, связанные с проектом.</div></div>
-    <div class="entry"><span class="tag">1.3</span><div class="body">Каждый лорный персонаж обязан в полной мере отыгрывать свою квоту по онлайну. Категорически запрещено отыгрывать квоту в AFK или выполнением какой-либо бесполезной деятельностью.</div></div>
-    <div class="entry"><span class="tag">1.4</span><div class="body">Каждый лорный персонаж обязан соблюдать действующие правила дискорд-сервера, а также проекта; независимо, где будет выдано наказание — лорник сможет получить предупреждение или выговор.</div></div>
-    <div class="entry"><span class="tag">1.5</span><div class="body">Запрещена махинация с правилами внутреннего регламента лорников, так и активный поиск дыр в нём.</div></div>
-    <div class="entry"><span class="tag">1.6</span><div class="body"><strong>Лидеры клана/сёгунат</strong> обязуются контролировать собственный состав; в это входит: если вы замечаете массовые нарушения правил — вы должны предотвратить их беседой/пресечением. При массовых нарушениях устава, массовом неадекватном поведении также считается данный пункт.</div></div>
-    <div class="entry"><span class="tag">1.7</span><div class="body">Запрещено перемещаться между двумя <strong>кланами/сёгунатом</strong>, если у Вас есть лорный персонаж. Исключение: второстепенные персонажи.</div></div>
-    <div class="entry"><span class="tag">1.8</span><div class="body">Условное применение наказаний. Наказания применяются по усмотрению РП состава с учётом тяжести нарушения, контекста ситуации и предшествующего поведения персонажа.</div></div>
-    <div class="entry"><span class="tag">1.9</span><div class="body">Мониторинг ситуации. РП состав осуществляет мониторинг ситуации на сервере, активности лорных персонажей и соблюдения ими обязанностей в рамках регламента, а также РП части сервера.</div></div>
-    <div class="entry"><span class="tag">1.10</span><div class="body">Вмешательство в дела <strong>кланов/сёгуната</strong>. РП состав вправе вмешаться в дела любого <strong>клана/сёгуната</strong>, если того требуют обстоятельства, правила проекта или необходимость разрешения конфликтных ситуаций.</div></div>
-    <div class="entry"><span class="tag">1.11</span><div class="body">Обнуление итогов события. РП состав имеет право обнулить или уточнить итоги ивента, события, чтобы не допустить несоответствия с тайм-лайном сюжета проекта.</div></div>
-    <div class="entry"><span class="tag">1.12</span><div class="body">Аннулирование отчётности. РП состав обладает правом аннулировать отчётность по аспектам подделки, обмана или некорректного заполнения; в таком случае квота за соответствующий период может быть не засчитана или пересмотрена.</div></div>
-    <div class="entry"><span class="tag">1.13</span><div class="body">Обязательность решений. Решения РП состава по наказаниям и вмешательству в дела <strong>кланов/сёгуната</strong> обязательны к исполнению <strong>лидерами клана/сёгуната</strong> и главными героями.</div></div>
-    <div class="entry"><span class="tag">1.14</span><div class="body">Разрешение споров. При возникновении споров между лорными персонажами или <strong>кланами/сёгунатом</strong> окончательное решение по вопросам, связанным с лором и регламентом, принимает РП состав.</div></div>
-    <div class="entry"><span class="tag">1.15</span><div class="body">Право на запрос информации. РП состав вправе запрашивать у лорных персонажей пояснения, скриншоты и иную информацию для проверки соблюдения регламента и правил проекта.</div></div>
-    <div class="entry"><span class="tag">1.16</span><div class="body">Координация с лидерами. РП состав вправе давать обязательные к исполнению указания <strong>лидерам клана/сёгуната</strong> по вопросам порядка, лора и отчётности; неисполнение таких указаний рассматривается как нарушение регламента.</div></div>
-    <div class="entry"><span class="tag">1.17</span><div class="body">Предотвращение конфликтов интересов. РП состав при принятии решений в отношении лорных персонажей обязан исключать конфликт интересов; при его возникновении вопрос передаётся другому представителю РП состава или вышестоящему по должности.</div></div>
+    <div class="rules">
+      <div class="rule-item"><span class="idx">1.1</span><div class="text">В случае рецидива нарушений мера наказаний увеличивается.</div></div>
+      <div class="rule-item"><span class="idx">1.2</span><div class="text">Каждый лорный персонаж обязан строго и чётко выполнять поставленные РП составом указания, связанные с проектом.</div></div>
+      <div class="rule-item"><span class="idx">1.3</span><div class="text">Каждый лорный персонаж обязан в полной мере отыгрывать свою квоту по онлайну. Категорически запрещено отыгрывать квоту в AFK или выполнением какой-либо бесполезной деятельностью.</div></div>
+      <div class="rule-item"><span class="idx">1.4</span><div class="text">Каждый лорный персонаж обязан соблюдать действующие правила дискорд-сервера, а также проекта; независимо, где будет выдано наказание — лорник сможет получить предупреждение или выговор.</div></div>
+      <div class="rule-item"><span class="idx">1.5</span><div class="text">Запрещена махинация с правилами внутреннего регламента лорников, так и активный поиск дыр в нём.</div></div>
+      <div class="rule-item"><span class="idx">1.6</span><div class="text"><strong>Лидеры клана/сёгунат</strong> обязуются контролировать собственный состав; в это входит: если вы замечаете массовые нарушения правил — вы должны предотвратить их беседой/пресечением. При массовых нарушениях устава, массовом неадекватном поведении также считается данный пункт.</div></div>
+      <div class="rule-item"><span class="idx">1.7</span><div class="text">Запрещено перемещаться между двумя <strong>кланами/сёгунатом</strong>, если у Вас есть лорный персонаж. Исключение: второстепенные персонажи.</div></div>
+      <div class="rule-item"><span class="idx">1.8</span><div class="text">Условное применение наказаний. Наказания применяются по усмотрению РП состава с учётом тяжести нарушения, контекста ситуации и предшествующего поведения персонажа.</div></div>
+      <div class="rule-item"><span class="idx">1.9</span><div class="text">Мониторинг ситуации. РП состав осуществляет мониторинг ситуации на сервере, активности лорных персонажей и соблюдения ими обязанностей в рамках регламента, а также РП части сервера.</div></div>
+      <div class="rule-item"><span class="idx">1.10</span><div class="text">Вмешательство в дела <strong>кланов/сёгуната</strong>. РП состав вправе вмешаться в дела любого <strong>клана/сёгуната</strong>, если того требуют обстоятельства, правила проекта или необходимость разрешения конфликтных ситуаций.</div></div>
+      <div class="rule-item"><span class="idx">1.11</span><div class="text">Обнуление итогов события. РП состав имеет право обнулить или уточнить итоги ивента, события, чтобы не допустить несоответствия с тайм-лайном сюжета проекта.</div></div>
+      <div class="rule-item"><span class="idx">1.12</span><div class="text">Аннулирование отчётности. РП состав обладает правом аннулировать отчётность по аспектам подделки, обмана или некорректного заполнения; в таком случае квота за соответствующий период может быть не засчитана или пересмотрена.</div></div>
+      <div class="rule-item"><span class="idx">1.13</span><div class="text">Обязательность решений. Решения РП состава по наказаниям и вмешательству в дела <strong>кланов/сёгуната</strong> обязательны к исполнению <strong>лидерами клана/сёгуната</strong> и главными героями.</div></div>
+      <div class="rule-item"><span class="idx">1.14</span><div class="text">Разрешение споров. При возникновении споров между лорными персонажами или <strong>кланами/сёгунатом</strong> окончательное решение по вопросам, связанным с лором и регламентом, принимает РП состав.</div></div>
+      <div class="rule-item"><span class="idx">1.15</span><div class="text">Право на запрос информации. РП состав вправе запрашивать у лорных персонажей пояснения, скриншоты и иную информацию для проверки соблюдения регламента и правил проекта.</div></div>
+      <div class="rule-item"><span class="idx">1.16</span><div class="text">Координация с лидерами. РП состав вправе давать обязательные к исполнению указания <strong>лидерам клана/сёгуната</strong> по вопросам порядка, лора и отчётности; неисполнение таких указаний рассматривается как нарушение регламента.</div></div>
+      <div class="rule-item"><span class="idx">1.17</span><div class="text">Предотвращение конфликтов интересов. РП состав при принятии решений в отношении лорных персонажей обязан исключать конфликт интересов; при его возникновении вопрос передаётся другому представителю РП состава или вышестоящему по должности.</div></div>
+    </div>
   </section>
 
-  <!-- РАЗДЕЛ 2 -->
-  <section class="block" id="s2">
-    <div class="block-title">
-      <span class="idx">02</span>
+  <!-- ===== РАЗДЕЛ 2 ===== -->
+  <section class="section" id="s2">
+    <div class="section-head">
+      <div class="num">02</div>
       <h2>Правила поведения</h2>
     </div>
-
-    <div class="entry"><span class="tag">2.1</span><div class="body">Запрещено злоупотребление полномочиями, «душка»/«слив» игроков.</div></div>
-    <div class="entry"><span class="tag">2.2</span><div class="body">Пример другим: без грубости вне РП, качественный отыгрыш.</div></div>
-    <div class="entry"><span class="tag">2.3</span><div class="body">Конфликты между лидерами — через РП состав.</div></div>
-    <div class="entry"><span class="tag">2.4</span><div class="body">Запрещено провоцировать OOC-конфликты и переносить личные споры в игровой процесс.</div></div>
-    <div class="entry"><span class="tag">2.5</span><div class="body">Обязателен уважительный тон общения в отношении игроков и состава проекта.</div></div>
-    <div class="entry"><span class="tag">2.6</span><div class="body">Все решения РП состава и <strong>лидеров клана/сёгуната</strong> обязательны к исполнению в рамках регламента.</div></div>
+    <div class="rules">
+      <div class="rule-item"><span class="idx">2.1</span><div class="text">Запрещено злоупотребление полномочиями, «душка»/«слив» игроков.</div></div>
+      <div class="rule-item"><span class="idx">2.2</span><div class="text">Пример другим: без грубости вне РП, качественный отыгрыш.</div></div>
+      <div class="rule-item"><span class="idx">2.3</span><div class="text">Конфликты между лидерами — через РП состав.</div></div>
+      <div class="rule-item"><span class="idx">2.4</span><div class="text">Запрещено провоцировать OOC-конфликты и переносить личные споры в игровой процесс.</div></div>
+      <div class="rule-item"><span class="idx">2.5</span><div class="text">Обязателен уважительный тон общения в отношении игроков и состава проекта.</div></div>
+      <div class="rule-item"><span class="idx">2.6</span><div class="text">Все решения РП состава и <strong>лидеров клана/сёгуната</strong> обязательны к исполнению в рамках регламента.</div></div>
+    </div>
   </section>
 
-  <!-- РАЗДЕЛ 3 -->
-  <section class="block" id="s3">
-    <div class="block-title">
-      <span class="idx">03</span>
+  <!-- ===== РАЗДЕЛ 3 ===== -->
+  <section class="section" id="s3">
+    <div class="section-head">
+      <div class="num">03</div>
       <h2>Испытательный срок</h2>
     </div>
+    <div class="rules">
+      <div class="rule-item"><span class="idx">3.1</span><div class="text">Испытательный срок длится <strong>две недели</strong> и начинается с момента вашего прохождения на лорного персонажа.</div></div>
+      <div class="rule-item"><span class="idx">3.2</span><div class="text">В случае получения выговора на испытательном сроке вы получаете <strong>снятие и перм ЧС лорных персонажей</strong>.</div></div>
+      <div class="rule-item"><span class="idx">3.3</span><div class="text">Взятие отпуска на испытательном сроке продлевает время его действия. Соотношение <strong>1 к 1</strong>.</div></div>
+    </div>
+    <div class="note-box"><strong>Пояснение:</strong> 1 день отпуска = +1 день к испытательному сроку.</div>
+  </section>
 
-    <div class="entry"><span class="tag">3.1</span><div class="body">Испытательный срок длится <strong>две недели</strong> и начинается с момента вашего прохождения на лорного персонажа.</div></div>
-    <div class="entry"><span class="tag">3.2</span><div class="body">В случае получения выговора на испытательном сроке вы получаете <strong>снятие и перм ЧС лорных персонажей</strong>.</div></div>
-    <div class="entry"><span class="tag">3.3</span><div class="body">Взятие отпуска на испытательном сроке продлевает время его действия. Соотношение <strong>1 к 1</strong>.</div></div>
+  <!-- ===== РАЗДЕЛ 4 — ВЗЫСКАНИЯ ===== -->
+  <section class="section" id="s4">
+    <div class="section-head">
+      <div class="num">04</div>
+      <h2>Взыскания для лидеров</h2>
+    </div>
 
-    <div class="callout"><strong>Пояснение:</strong> 1 день отпуска = +1 день к испытательному сроку.</div>
+    <div class="sub-title">Регламент взысканий</div>
+
+    <div class="card-grid">
+      <div class="info-card red">
+        <div class="card-title">Выговор</div>
+        <div class="card-text">За нарушение правил проекта, регламентов лорников или невыполнение квот.</div>
+      </div>
+      <div class="info-card amber">
+        <div class="card-title">Обычные выговоры</div>
+        <div class="card-text">Стандартные нарушения.</div>
+      </div>
+      <div class="info-card red">
+        <div class="card-title">Перманентные выговоры</div>
+        <div class="card-text">Серьёзные нарушения или рецидив. Отработка через <strong>2 месяца</strong> при хорошем поведении.</div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>Санкции за обычный выговор:</strong> запрет второй профессии после квоты; норма онлайна — <strong>2 часа</strong>.
+    </div>
+
+    <div class="note-box green">
+      <strong>Предупреждения</strong> — за незначительные нарушения. Слетают через неделю, санкций нет.
+    </div>
+
+    <div class="sub-title">Отработка взысканий</div>
+
+    <div class="rules">
+      <div class="rule-item"><span class="idx">•</span><div class="text">Отработка выговора — задание от РП состава, возможно через <strong>3 дня</strong> после получения.</div></div>
+      <div class="rule-item"><span class="idx">•</span><div class="text">Предупреждения снимаются автоматически через неделю.</div></div>
+      <div class="rule-item"><span class="idx">•</span><div class="text">Перманентные выговоры — отработка через <strong>3 месяца</strong> при одобрении РП-куратора.</div></div>
+      <div class="rule-item"><span class="idx">•</span><div class="text">Срок на отработку выговора — <strong>неделя</strong>, иначе он становится перманентным.</div></div>
+      <div class="rule-item"><span class="idx">•</span><div class="text">Активный отпуск: <strong>+1 день</strong> (или по числу дней отпуска) к времени на отработку. Абуз отпуска → перм выговор, отработка только через <strong>4 месяца</strong>.</div></div>
+    </div>
+
+    <div class="sub-title">Регламент ЧС лорников</div>
+
+    <div class="note-box amber">
+      При снятии — ЧС <strong>от 5 дней до перманента</strong> в зависимости от причины.
+    </div>
+
+    <div class="rules" style="margin-top:16px">
+      <div class="rule-item"><span class="idx">1</span><div class="text"><strong>Снятие после испытательного срока:</strong> сразу после срока — ЧС 1 месяц; через время без выговоров — ЧС 5 дней.</div></div>
+      <div class="rule-item"><span class="idx">2</span><div class="text"><strong>Снятие с выговорами:</strong> 1 выговор = ЧС 3 мес.; 2 = 6 мес.; 3 = перм ЧС.</div></div>
+      <div class="rule-item"><span class="idx">3</span><div class="text"><strong>Снятие без двухнедельного отчёта:</strong> на испытательном = перм ЧС; с 1 выговором = от 3 мес.; с 2 = от 6 мес.</div></div>
+    </div>
+
+    <div class="sub-title">Отпуска</div>
+
+    <div class="rules">
+      <div class="rule-item"><span class="idx">•</span><div class="text">Макс. отпуск <strong>1 неделя</strong>; КД на отпуск — <strong>3 недели</strong> (искл. семейные обстоятельства).</div></div>
+      <div class="rule-item"><span class="idx">•</span><div class="text">Норма онлайна только в прайм-тайм. Не успели — отпуск «отдых/устал» принимается до <strong>18:30</strong>, после отклоняется.</div></div>
+      <div class="rule-item"><span class="idx">•</span><div class="text">Отпуск = полное отсутствие на сервере. Заход на любой из двух серверов → аннулирование отпуска.</div></div>
+      <div class="rule-item"><span class="idx">•</span><div class="text">Отпуск скидывать в ветку лорного персонажа.</div></div>
+    </div>
+
+    <div class="note-box">
+      <strong>Важно:</strong> отпуск «отдых», но играете на первом для квоты, или «болеете» и играете — отпуск аннулируется + наказание за квоту.
+    </div>
   </section>
 
 </div>
 
-<div class="foot">
-  <b>Регламент лидеров KAMI</b> · Внутренний документ проекта · Все решения РП состава обязательны к исполнению
-</div>
+<footer class="site-footer">
+  <b>Регламент лидеров</b> · Внутренний документ проекта · KAMI
+</footer>
 
-<button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="scroll-up" id="scrollUp" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-  const up = document.getElementById('up');
-  addEventListener('scroll', () => up.classList.toggle('on', scrollY > 500));
+  const scrollUp = document.getElementById('scrollUp');
+  addEventListener('scroll', () => scrollUp.classList.toggle('visible', scrollY > 500));
 </script>
 
 </body>
